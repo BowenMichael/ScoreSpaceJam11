@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 dir = player.transform.position - transform.position;
         transform.position += dir.normalized * speed * Time.fixedDeltaTime;
+        lookAt(player.transform.position);
     }
 
     private void OnDestroy()
@@ -38,5 +39,13 @@ public class EnemyController : MonoBehaviour
         tmp.transform.parent = null;
         spawner.removeEnemy(this.gameObject);
         //tmp.Play();
+    }
+
+    private void lookAt(Vector3 pos)
+    {
+        //Look at
+        Vector3 directionToMouse = transform.position - pos;
+        float angle = Mathf.Atan2(directionToMouse.x, directionToMouse.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
     }
 }

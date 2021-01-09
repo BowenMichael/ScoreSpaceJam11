@@ -255,7 +255,7 @@ MonoBehaviour:
   player: {fileID: 2028531416}
   rooms:
   - {fileID: 2562176668514825339, guid: bf907f7fc8e22014e97572dae7163f0c, type: 3}
-  - {fileID: 2562176668514825339, guid: ce8174dc76e24524cb4043e5d417ca99, type: 3}
+  - {fileID: 2562176668514825339, guid: 434969a1c5cbe764082866dcbf300d29, type: 3}
   - {fileID: 2562176668514825339, guid: 434969a1c5cbe764082866dcbf300d29, type: 3}
 --- !u!1 &801382305
 GameObject:
