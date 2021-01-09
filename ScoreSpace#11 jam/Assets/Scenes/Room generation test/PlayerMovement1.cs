@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement1 : MonoBehaviour
 {
     public float speed = 10f;
     public float maxDistance = 2f;
@@ -16,11 +16,10 @@ public class PlayerMovement : MonoBehaviour
     public float energy = 0;
     Vector3 mousePos;
     private GameController gm;
-    float angle;
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        //gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -28,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //MousePosition in world space
         mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        mousePos = new Vector3(mousePos.x, 0.0f, mousePos.y);
         
         movementWSAD();
         if (energy >= teleportCost)
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void teleportTowardMouse()
     {
-        transform.position += (new Vector3(mousePos.x, mousePos.y, 0.0f) - transform.position).normalized * maxDistance;
+        transform.position += (new Vector3(mousePos.x, 0.0f, mousePos.y) - transform.position).normalized * maxDistance;
         energy -= teleportCost;
        
     }
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         //Look at
         Vector3 directionToMouse = transform.position - mousePos;
         float angle = Mathf.Atan2(directionToMouse.x, directionToMouse.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
     }
 
     private void teleportCheck()
@@ -82,10 +82,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     hitEnemy(hit);
                 }
-                //else if (hitTag.Equals("Wall"))
-                //{
-                //    //teleportToNextRoom();
-                //}
                 if (!hitTag.Equals("Enviorment"))
                 {
                     teleportTowardMouse();
@@ -101,21 +97,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void teleportToNextRoom(Vector3 dir)
-    {
-        //if (angle > 45 && angle <= 145)
-        //{
-        //    //up
-        //}
-        //else if (angle > 145 && angle)
-    }
-
     private void movementWSAD()
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        Vector3 dir = new Vector3(horizontal, vertical, 0.0f).normalized;
+        Vector3 dir = new Vector3(horizontal, 0.0f, vertical).normalized;
         transform.position += dir * speed * Time.deltaTime;
     }
 
