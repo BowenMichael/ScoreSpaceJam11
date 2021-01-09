@@ -20,7 +20,7 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         tiles = new tileController[gridSize.x,gridSize.y];
-        playSpace = gameObject.AddComponent<BoxCollider>();
+        //playSpace = gameObject.AddComponent<BoxCollider>();
         genGrid();
         assignNeighbors();
         placePlayer();
