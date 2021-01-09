@@ -11,6 +11,8 @@ public class RoomManager : MonoBehaviour
     public Vector2Int gridOffset;
     public tileController[,] tiles;
     public GameObject player;
+    public List<GameObject> rooms;
+
     private BoxCollider playSpace;
 
 
@@ -51,7 +53,7 @@ public class RoomManager : MonoBehaviour
             {
                 
                 Vector3 gridPos = new Vector3(tileWidth * i * gridOffset.x, tileHeight * j * gridOffset.y, 0.0f);
-                tiles[i,j] = Instantiate(tile, gridPos, new Quaternion()).GetComponent<tileController>();
+                tiles[i,j] = Instantiate(rooms[Random.Range(0, rooms.Count)], gridPos, new Quaternion()).GetComponent<tileController>();
                 if (i != 0 && j == 0)
                 {
                     tiles[i - 1, gridSize.y - 1].setNextRoom(tiles[i, j].gameObject);
