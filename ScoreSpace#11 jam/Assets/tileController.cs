@@ -53,7 +53,10 @@ public class tileController : MonoBehaviour
 
     public void moveToNextRoom()
     {
-        nextTile.setRoomActive();
+        if (nextTile != null)
+            nextTile.setRoomActive();
+        else
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().stageComplete();
     }
 
     private void setCameraToTile()

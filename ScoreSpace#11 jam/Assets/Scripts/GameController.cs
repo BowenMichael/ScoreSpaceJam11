@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public Text text;
-
+    public string storeScene;
     private int score;
 
 
@@ -28,5 +29,9 @@ public class GameController : MonoBehaviour
         text.text = "Score: " + this.score;
     }
 
+    public void stageComplete()
+    {
+        SceneManager.LoadScene(storeScene);
+    }
 
 }
