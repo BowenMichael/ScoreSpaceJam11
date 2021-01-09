@@ -11,12 +11,14 @@ public class RoomManager : MonoBehaviour
     public Vector2Int gridOffset;
     public tileController[,] tiles;
     public GameObject player;
+    private BoxCollider playSpace;
 
 
     // Start is called before the first frame update
     void Start()
     {
         tiles = new tileController[gridSize.x,gridSize.y];
+        playSpace = gameObject.AddComponent<BoxCollider>();
         genGrid();
         assignNeighbors();
         placePlayer();
@@ -26,8 +28,18 @@ public class RoomManager : MonoBehaviour
     {
         int middleX = gridSize.x / 2;
         int middleY = gridSize.y / 2;
-        player.transform.position = tiles[middleX, middleY].transform.position;
+        player.transform.position = tiles[0, 0].transform.position;
+        playSpace.center = new Vector3(((gridSize.x / 2.0f) * tileWidth) - tileWidth/2.0f, ((gridSize.y / 2.0f) * tileWidth) - tileHeight / 2.0f, 0.0f);
+        playSpace.size = new Vector3(tileWidth * gridSize.x, tileHeight * gridSize.y, 0.0f);
         //Instantiate(player, tiles[middleX, middleY].transform.position, new Quaternion());
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            
+        }
     }
 
     void genGrid()
@@ -37,9 +49,18 @@ public class RoomManager : MonoBehaviour
         {
             for(j = 0; j < gridSize.y; j++)
             {
+                
                 Vector3 gridPos = new Vector3(tileWidth * i * gridOffset.x, tileHeight * j * gridOffset.y, 0.0f);
                 tiles[i,j] = Instantiate(tile, gridPos, new Quaternion()).GetComponent<tileController>();
+                if (i != 0 && j == 0)
+                {
+                    tiles[i - 1, gridSize.y - 1].setNextRoom(tiles[i, j].gameObject);
+                }
+                if (j > 0)
+                    tiles[i, j-1].setNextRoom(tiles[i,j].gameObject);
+                
             }
+
         }
     }
 

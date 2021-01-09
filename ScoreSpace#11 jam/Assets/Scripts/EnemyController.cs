@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
     public ParticleSystem onDeath;
     public GameObject player;
     public float speed;
+    private EnemySpawner spawner;
+    
 
     private void Start()
     {
@@ -19,6 +21,11 @@ public class EnemyController : MonoBehaviour
         moveTowardPlayer();
     }
 
+    public void setSpawner(EnemySpawner spwn)
+    {
+        spawner = spwn;
+    }
+
     void moveTowardPlayer()
     {
         Vector3 dir = player.transform.position - transform.position;
@@ -29,6 +36,7 @@ public class EnemyController : MonoBehaviour
     {
         ParticleSystem tmp = Instantiate(onDeath, transform);
         tmp.transform.parent = null;
+        spawner.removeEnemy(this.gameObject);
         //tmp.Play();
     }
 }
