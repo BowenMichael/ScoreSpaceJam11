@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public float energyRegenPerSecond = 1f;
     public float teleportCost = 30f;
     public EnergySlider eSlider;
+    public bool cameraMovesWithPlayer;
+    public bool teleportGuideEnabled;
+    public Transform guideImage;
 
     private float horizontal;
     private float vertical;
@@ -17,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 mousePos;
     private GameController gm;
     float angle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +33,17 @@ public class PlayerMovement : MonoBehaviour
     {
         //MousePosition in world space
         mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-        
+
+        if (cameraMovesWithPlayer)
+        {
+            updateCameraPosition();
+        }
+
+        if (teleportGuideEnabled)
+        {
+            updateGuidePosition();
+        }
+
         movementWSAD();
         if (energy >= teleportCost)
         {
@@ -43,6 +58,17 @@ public class PlayerMovement : MonoBehaviour
             eSlider.setEnergy(energy/ maxEnergy);
         }
         lookAtMouse();
+        
+    }
+
+    private void updateGuidePosition()
+    {
+        guideImage.position = transform.position + (mousePos - transform.position).normalized * maxDistance;
+    }
+
+    private void updateCameraPosition()
+    {
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
     }
 
     private void teleportTowardMouse()
