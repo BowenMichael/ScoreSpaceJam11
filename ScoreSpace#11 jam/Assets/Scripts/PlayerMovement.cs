@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool cameraMovesWithPlayer;
     public bool teleportGuideEnabled;
     public Transform guideImage;
+    public bool knockedBack = false;
 
     private float horizontal;
     private float vertical;
@@ -44,21 +45,35 @@ public class PlayerMovement : MonoBehaviour
             updateGuidePosition();
         }
 
-        movementWSAD();
-        if (energy >= teleportCost)
+        if (!knockedBack)
         {
-            teleportCheck();
+            if (Time.timeScale == 1) {
+                movementWSAD();
+                if (energy >= teleportCost)
+                {
+                    teleportCheck();
+                }
+                if (energy < maxEnergy)
+                {
+                    energy += energyRegenPerSecond * Time.deltaTime;
+                }
+                if (eSlider != null)
+                {
+                    eSlider.setEnergy(energy / maxEnergy);
+                }
+                lookAtMouse();
+            }
         }
-        if (energy < maxEnergy)
+        else
         {
-            energy += energyRegenPerSecond * Time.deltaTime;
+            LeanTween.rotate(gameObject, new Vector3(0.0f, 0.0f, 360f), 1f).setOnComplete(onKnockbackComplete);
         }
-        if(eSlider != null)
-        {
-            eSlider.setEnergy(energy/ maxEnergy);
-        }
-        lookAtMouse();
         
+    }
+
+    private void onKnockbackComplete()
+    {
+        knockedBack = false;
     }
 
     private void updateGuidePosition()
