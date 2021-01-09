@@ -31,6 +31,11 @@ public class GameController : MonoBehaviour
 
     public void stageComplete()
     {
+        PlayerPrefs.SetInt("Score", score);
+        if(score > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
         SceneManager.LoadScene(storeScene);
     }
 

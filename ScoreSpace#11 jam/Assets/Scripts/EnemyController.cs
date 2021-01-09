@@ -48,4 +48,12 @@ public class EnemyController : MonoBehaviour
         float angle = Mathf.Atan2(directionToMouse.x, directionToMouse.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+
+        }
+    }
 }
