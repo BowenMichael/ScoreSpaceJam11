@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
        
         if(enemies.Count <= 0)
         {
-            GetComponent<tileController>().moveToNextRoom();
+            GetComponent<tileController>().setRoomToComplete();
             Destroy(this);
         }
     }

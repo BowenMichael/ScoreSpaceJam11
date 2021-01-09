@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class tileController : MonoBehaviour
 {
@@ -14,13 +15,27 @@ public class tileController : MonoBehaviour
     }
 
     public bool playerIn= false;
+    public GameObject rewardObj;
+    public UITweener startAnimation;
+    public int index;
+    public Text roundText;
+    private Reward reward;
     private tileController[] neighbors = new tileController[4]; //0 above, 1 right, 2 bot, 3 left
     private GameObject nextRoom;
     private tileController nextTile;
+    private bool completed=false;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.gameObject.CompareTag("Player"))
+        reward = rewardObj.AddComponent<Reward>();
+        reward.setTile(this);
+        rewardObj.SetActive(false);
+        roundText.text = "Round " + index;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
             setRoomActive();
         }
@@ -30,11 +45,32 @@ public class tileController : MonoBehaviour
     {
         setCameraToTile();
         setPlayerToTile();
+        startAnimation.transform.parent.gameObject.SetActive(true);
+        startAnimation.onStartRoom();
+        
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(true);
+
         }
+        rewardObj.SetActive(false);
         
+        
+        
+        
+
+    }
+
+    IEnumerator waitSeconds(float t)
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(t);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
     public void setNeighbor(tileController neighbor, neighbor t) 
@@ -71,6 +107,19 @@ public class tileController : MonoBehaviour
         plr.transform.position = new Vector3(transform.position.x, transform.position.y, plr.transform.position.z);
     }
 
+
+    public void setRoomToComplete()
+    {
+        onComplete();
+    }
+
+    private void onComplete()
+    {
+        completed = true;
+        rewardObj.SetActive(true);
+        
+
+    }
 
 
 

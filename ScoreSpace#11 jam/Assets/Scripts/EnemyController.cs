@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
     void moveTowardPlayer()
     {
         Vector3 dir = player.transform.position - transform.position;
-        transform.position += dir.normalized * speed * Time.fixedDeltaTime;
+        transform.position += dir.normalized * speed * Time.deltaTime;
         lookAt(player.transform.position);
     }
 

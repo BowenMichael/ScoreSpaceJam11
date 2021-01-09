@@ -46,7 +46,7 @@ public class RoomManager : MonoBehaviour
 
     void genGrid()
     {
-        int i, j;
+        int i, j, k = 1;
         for(i = 0; i < gridSize.x; i++)
         {
             for(j = 0; j < gridSize.y; j++)
@@ -54,12 +54,15 @@ public class RoomManager : MonoBehaviour
                 
                 Vector3 gridPos = new Vector3(tileWidth * i * gridOffset.x, tileHeight * j * gridOffset.y, 0.0f);
                 tiles[i,j] = Instantiate(rooms[Random.Range(0, rooms.Count)], gridPos, new Quaternion()).GetComponent<tileController>();
-                if (i != 0 && j == 0)
+                tiles[i, j].name = "Room " + (i + 1) + ", " + (j + 1);
+                tiles[i, j].index = k;
+                if (i != 0 && j == 0) 
                 {
                     tiles[i - 1, gridSize.y - 1].setNextRoom(tiles[i, j].gameObject);
                 }
                 if (j > 0)
                     tiles[i, j-1].setNextRoom(tiles[i,j].gameObject);
+                k++;
                 
             }
 

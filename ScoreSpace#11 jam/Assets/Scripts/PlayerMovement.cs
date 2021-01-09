@@ -63,7 +63,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void updateGuidePosition()
     {
-        guideImage.position = transform.position + (mousePos - transform.position).normalized * maxDistance;
+        Vector3 offset = (mousePos - transform.position).normalized * maxDistance;
+        Vector2 normalizedOffset = new Vector2(offset.x, offset.y).normalized;
+        guideImage.position = new Vector3(offset.x, offset.y, guideImage.position.z) ;
     }
 
     private void updateCameraPosition()
