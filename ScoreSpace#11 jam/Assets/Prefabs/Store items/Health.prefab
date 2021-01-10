@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 5724880158724018928}
   - component: {fileID: -616794378098364160}
   m_Layer: 5
-  m_Name: Item
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,10 +452,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
   item: {fileID: 0}
-  name: NULL ITEM
-  desc: NULL DESC
-  sellPrice: -1
-  buyPrice: -1
+  name: Health
+  desc: Health points
+  sellPrice: 20
+  buyPrice: 30
   stock: 0
   nameText: {fileID: 5779868681775775434}
   descText: {fileID: 8468376530203864849}
