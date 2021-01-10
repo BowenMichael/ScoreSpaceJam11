@@ -7,9 +7,10 @@ public class EnemyController : MonoBehaviour
     public ParticleSystem onDeath;
     public GameObject player;
     public float speed;
-    public int dmg;
+    public float dmg;
     public float forceOfKnockBack;
     private EnemySpawner spawner;
+    private float dmgScale;
     
 
     private void Start()
@@ -26,6 +27,12 @@ public class EnemyController : MonoBehaviour
     public void setSpawner(EnemySpawner spwn)
     {
         spawner = spwn;
+    }
+
+    public void setScale(float scale)
+    {
+        dmgScale = scale;
+        dmg *= dmgScale;
     }
 
     void moveTowardPlayer()
@@ -63,5 +70,10 @@ public class EnemyController : MonoBehaviour
     public Vector3 getFacing()
     {
         return lookAt(player.transform.position).normalized;
+    }
+
+    public int getDamage()
+    {
+        return (int)dmg;
     }
 }

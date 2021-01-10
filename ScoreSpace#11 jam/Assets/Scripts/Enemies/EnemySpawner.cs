@@ -12,12 +12,15 @@ public class EnemySpawner : MonoBehaviour
     public float waveTimeInSeconds = 5;
     public int waveScaling;
     private float timeSinceWave = 0;
+    public float enemyScale;
+  
 
     public List<GameObject> enemies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
+        
         spawnEnemies();
     }
 
@@ -28,7 +31,9 @@ public class EnemySpawner : MonoBehaviour
             Vector3 randomPos = new Vector3(Random.Range(-maxPos, maxPos), Random.Range(-maxPos, maxPos), 0.0f);
             GameObject tmp = Instantiate(enemy, enemyParent.position + randomPos, new Quaternion(), enemyParent);
             enemies.Add(tmp);
-            tmp.GetComponent<EnemyController>().setSpawner(this);
+            EnemyController enemyControl = tmp.GetComponent<EnemyController>();
+            enemyControl.setSpawner(this);
+            enemyControl.setScale(enemyScale);
         }
     }
 

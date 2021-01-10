@@ -11,9 +11,10 @@ public class GameController : MonoBehaviour
     public Text text;
     public string storeScene;
     public string endScene;
+    public float stageScaling;
     private int score;
     private int roomsCleared;
-    private int stage;
+    private int stage=1;
 
 
     // Start is called before the first frame update
@@ -75,6 +76,11 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         GetComponent<RoomManager>().resetRooms();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+    }
+
+    public float getScaling()
+    {
+        return stageScaling*stage;
     }
 
    

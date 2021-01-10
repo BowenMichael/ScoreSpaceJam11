@@ -14,16 +14,14 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> rooms;
 
     private BoxCollider playSpace;
+    private GameController gm;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        tiles = new tileController[gridSize.x,gridSize.y];
-        //playSpace = gameObject.AddComponent<BoxCollider>();
-        genGrid();
-        assignNeighbors();
-        placePlayer();
+        gm = GetComponent<GameController>();
+        setUpRooms();
     }
 
     void placePlayer()
@@ -56,6 +54,7 @@ public class RoomManager : MonoBehaviour
                 tiles[i,j] = Instantiate(rooms[Random.Range(0, rooms.Count)], gridPos, new Quaternion()).GetComponent<tileController>();
                 tiles[i, j].name = "Room " + (i + 1) + ", " + (j + 1);
                 tiles[i, j].index = k;
+                tiles[i, j].gameObject.GetComponent<EnemySpawner>().enemyScale = gm.getScaling();
                 if (i != 0 && j == 0) 
                 {
                     tiles[i - 1, gridSize.y - 1].setNextRoom(tiles[i, j].gameObject);
@@ -95,6 +94,10 @@ public class RoomManager : MonoBehaviour
         {
             Destroy(tile.gameObject);
         }
+        setUpRooms();
+    }
+
+    public void setUpRooms() {
         tiles = new tileController[gridSize.x, gridSize.y];
         //playSpace = gameObject.AddComponent<BoxCollider>();
         genGrid();
