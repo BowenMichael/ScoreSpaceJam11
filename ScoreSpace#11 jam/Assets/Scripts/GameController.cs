@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public GameObject store;
+    public StoreManager sm;
     public Text text;
     public string storeScene;
     public string endScene;
@@ -17,6 +18,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sm = store.gameObject.GetComponentInChildren<StoreManager>();
         score = PlayerPrefs.GetInt("Score");
         text.text = "Score: " + score;
     }
@@ -60,14 +62,19 @@ public class GameController : MonoBehaviour
     public void openStore()
     {
         store.SetActive(true);
+        sm.onOpenStore();
         Time.timeScale = 0;
     }
 
     public void closeStore()
     {
         store.SetActive(false);
+        score = sm.updateScoreOnClose();
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        GetComponent<RoomManager>().resetRooms();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
+
+   
 
 }

@@ -89,5 +89,17 @@ public class RoomManager : MonoBehaviour
         //}
     }
 
-   
+    public void resetRooms()
+    {
+        foreach(tileController tile in tiles)
+        {
+            Destroy(tile.gameObject);
+        }
+        tiles = new tileController[gridSize.x, gridSize.y];
+        //playSpace = gameObject.AddComponent<BoxCollider>();
+        genGrid();
+        assignNeighbors();
+        placePlayer();
+    }
+
 }

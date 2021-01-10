@@ -20,6 +20,9 @@ public class ItemController : MonoBehaviour
     public Button buyButton;
     public Button sellButton;
     public itemType iType;
+    private bool notPurchasableFlag;
+    private float timeForNotPurcahaseableFlag = 1.5f;
+    private float timeSinceLastNotPuchaseFlag = 0f;
 
 
     public enum itemType
@@ -46,9 +49,9 @@ public class ItemController : MonoBehaviour
 
     void buyItem()
     {
-        if(stock > 0)
+        if (stock > 0)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().upgrade(iType);
+            sm.buyItem(this, buyPrice);
             stock--;
         }
         else
@@ -61,5 +64,28 @@ public class ItemController : MonoBehaviour
     void sellItem()
     {
 
+    }
+    private void Update()
+    {
+        
+        if (notPurchasableFlag)
+        {
+            //Debug.Log(timeSinceLastNotPuchaseFlag);
+            if (timeSinceLastNotPuchaseFlag > timeForNotPurcahaseableFlag)
+            {
+                notPurchasableFlag = false;
+                buyText.text = buyPrice.ToString();
+                buyText.color = Color.green;
+            }
+            timeSinceLastNotPuchaseFlag += Time.unscaledDeltaTime;
+        }
+    }
+
+    public void notPuchasable(string reason)
+    {
+        buyText.text = reason;
+        buyText.color = Color.red;
+        notPurchasableFlag = true;
+        timeSinceLastNotPuchaseFlag = 0f;
     }
 }

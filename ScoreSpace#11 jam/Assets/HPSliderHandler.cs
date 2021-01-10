@@ -7,15 +7,18 @@ public class HPSliderHandler : MonoBehaviour
 {
     public Slider slide;
     public Gradient g;
+    public Text t;
     // Start is called before the first frame update
     void Start()
     {
         //slide = GetComponent<Slider>();
     }
 
-    public void setHealth(float health)//normalized energy value
+    public void setHealth(float health, float maxHealth)//normalized energy value
     {
-        slide.value = health;
+
+        slide.value = health / maxHealth;
         slide.fillRect.gameObject.GetComponent<Image>().color = g.Evaluate(health);
+        t.text = health.ToString();
     }
 }

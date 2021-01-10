@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private GameController gm;
     private int health;
 
+    
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody>();
         health = maxHealth;
-        hpUI.setHealth(1f);
+        hpUI.setHealth(health, maxHealth);
     }
 
     // Update is called once per frame
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private void takeDamage(int dmg)
     {
         health -= dmg;
-        hpUI.setHealth((health * 1.0f / maxHealth));
+        hpUI.setHealth(health, maxHealth);
         
     }
 
@@ -67,16 +68,44 @@ public class PlayerController : MonoBehaviour
         gm.endGame();
     }
 
-    public void upgrade(ItemController.itemType type)
+    public bool increaseHealth(int increment)
     {
-        switch (type)
-        {
-            case ItemController.itemType.UNKOWN:
-                return;
-            case ItemController.itemType.ITEM:
-                break;
-                //case
-
+        if(health + increment <= maxHealth && health + increment > 0) {
+            health += increment;
+            hpUI.setHealth(health, maxHealth);
+            return true;
         }
+        return false;
+       
+    }
+
+    public void increaseEnergyRegen(int increment)
+    {
+        plrMvm.energyRegenPerSecond += increment;
+    }
+    public void increaseMaxEnergy(int increment)
+    {
+        plrMvm.maxEnergy += increment;
+        plrMvm.eSlider.setEnergy(plrMvm.energy, plrMvm.maxEnergy);
+    }
+
+    public bool decreaseEnergyRegen(int increment)
+    {
+        if (plrMvm.energyRegenPerSecond - increment >= 5)
+        {
+            plrMvm.energyRegenPerSecond -= increment;
+            return true;
+        }
+        return false;
+    }
+    public bool decreaseMaxEnergy(int increment)
+    {
+        if (plrMvm.maxEnergy - increment >= 5)
+        {
+            plrMvm.maxEnergy -= increment;
+            plrMvm.eSlider.setEnergy(plrMvm.energy, plrMvm.maxEnergy);
+            return true;
+        }
+        return false;
     }
 }

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.11035967, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -456,14 +456,14 @@ MonoBehaviour:
   desc: Health points
   sellPrice: 20
   buyPrice: 30
-  stock: 0
+  stock: 10
   nameText: {fileID: 5779868681775775434}
   descText: {fileID: 8468376530203864849}
   sellText: {fileID: 2069644319960382852}
   buyText: {fileID: 388323253847072796}
   buyButton: {fileID: 2543581012653709715}
   sellButton: {fileID: 3607959976341960182}
-  iType: 0
+  iType: 1
 --- !u!1 &6208093450527222545
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.061599493, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.03875816, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
