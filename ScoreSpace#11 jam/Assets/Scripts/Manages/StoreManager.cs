@@ -41,6 +41,7 @@ public class StoreManager : MonoBehaviour
         Debug.Log(item.iType);
         if (cost <= score)
         {
+            item.stock--;
             score -= cost;
         
             switch (item.iType)

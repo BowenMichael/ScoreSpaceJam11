@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public string endScene;
     private int score;
     private int roomsCleared;
+    private int stage;
 
 
     // Start is called before the first frame update
@@ -36,6 +37,7 @@ public class GameController : MonoBehaviour
 
     public void stageComplete()
     {
+        stage++;
         PlayerPrefs.SetInt("Score", score);
         if(score > PlayerPrefs.GetInt("HighScore"))
         {

@@ -17,12 +17,14 @@ public class ItemController : MonoBehaviour
     public Text descText;
     public Text sellText;
     public Text buyText;
+    public Text stockText;
     public Button buyButton;
     public Button sellButton;
     public itemType iType;
     private bool notPurchasableFlag;
     private float timeForNotPurcahaseableFlag = 1.5f;
     private float timeSinceLastNotPuchaseFlag = 0f;
+    private int maxStock;
 
 
     public enum itemType
@@ -38,6 +40,7 @@ public class ItemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxStock = stock;
         nameText.text = name;
         descText.text = desc;
         sellText.text = sellPrice.ToString();
@@ -52,7 +55,6 @@ public class ItemController : MonoBehaviour
         if (stock > 0)
         {
             sm.buyItem(this, buyPrice);
-            stock--;
         }
         else
         {
@@ -67,7 +69,7 @@ public class ItemController : MonoBehaviour
     }
     private void Update()
     {
-        
+        stockText.text = stock + "/" + maxStock;
         if (notPurchasableFlag)
         {
             //Debug.Log(timeSinceLastNotPuchaseFlag);
