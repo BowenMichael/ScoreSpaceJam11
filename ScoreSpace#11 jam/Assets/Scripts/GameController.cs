@@ -34,17 +34,18 @@ public class GameController : MonoBehaviour
     public void stageComplete()
     {
         PlayerPrefs.SetInt("Score", score);
-        PlayerPrefs.SetInt("RoomsCleared", PlayerPrefs.GetInt("RoomsCleared") * roomsCleared);
         if(score > PlayerPrefs.GetInt("HighScore"))
         {
             PlayerPrefs.SetInt("HighScore", score);
         }
+        PlayerPrefs.Save();
         SceneManager.LoadScene(storeScene);
     }
 
     public void roomComplete()
     {
         roomsCleared++;
+        PlayerPrefs.SetInt("RoomsCleared", PlayerPrefs.GetInt("RoomsCleared") + 1);
     }
 
     public void endGame()

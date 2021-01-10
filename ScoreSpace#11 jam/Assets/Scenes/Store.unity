@@ -329,7 +329,12 @@ MonoBehaviour:
   items:
   - {fileID: 5724880158724018930, guid: 5495d79934c50104388b579f2ca703bc, type: 3}
   - {fileID: 5724880158724018930, guid: 083674043b228a04f94255dc3f972532, type: 3}
+  - {fileID: 5724880158724018930, guid: 2cd56d0fc1ae0ee41a3bf3ea21596f10, type: 3}
+  - {fileID: 5724880158724018930, guid: 328ed05c2457ee443a2677475a90132a, type: 3}
   itemHolder: {fileID: 120403378}
+  score: 0
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
 --- !u!4 &124408083
 Transform:
   m_ObjectHideFlags: 0
