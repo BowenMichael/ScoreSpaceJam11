@@ -11,6 +11,7 @@ public class ItemController : MonoBehaviour
     public string desc;
     public int sellPrice;
     public int buyPrice;
+    public int stock;
 
     public Text nameText;
     public Text descText;
@@ -18,11 +19,16 @@ public class ItemController : MonoBehaviour
     public Text buyText;
     public Button buyButton;
     public Button sellButton;
+    public itemType iType;
 
 
-    enum itemType
+    public enum itemType
     {
         UNKOWN = -1,
+        ITEM,
+        HEALTH,
+        ENERGY_RATE,
+        ENERGY_MAX,
 
     }
 
@@ -38,14 +44,17 @@ public class ItemController : MonoBehaviour
         sellButton.onClick.AddListener(sellItem);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void buyItem()
     {
+        if(stock > 0)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().upgrade(iType);
+            stock--;
+        }
+        else
+        {
+            buyText.text = "OUT";
+        }
         //sm.
     }
 

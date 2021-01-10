@@ -12,14 +12,14 @@ public class GameOverController : MonoBehaviour
     public void onReset()
     {
         clearTempPrefs();
-        SceneManager.LoadScene(playScene);
+        SceneManager.LoadScene(playScene, LoadSceneMode.Single);
         
     }
 
     public void onExit()
     {
         clearTempPrefs();
-        SceneManager.LoadScene(menuScene);
+        SceneManager.LoadScene(menuScene, LoadSceneMode.Single);
     }
 
     public void clearTempPrefs()

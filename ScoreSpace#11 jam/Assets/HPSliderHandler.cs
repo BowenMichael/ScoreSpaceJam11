@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class HPSliderHandler : MonoBehaviour
 {
-    private Slider slide;
+    public Slider slide;
     public Gradient g;
     // Start is called before the first frame update
     void Start()
     {
-        slide = GetComponent<Slider>();
+        //slide = GetComponent<Slider>();
     }
 
     public void setHealth(float health)//normalized energy value

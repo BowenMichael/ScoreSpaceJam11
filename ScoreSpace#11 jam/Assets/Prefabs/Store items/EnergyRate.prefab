@@ -456,12 +456,14 @@ MonoBehaviour:
   desc: Increases Player Energy Regen by 5 per second
   sellPrice: 20
   buyPrice: 30
+  stock: 0
   nameText: {fileID: 5779868681775775434}
   descText: {fileID: 8468376530203864849}
   sellText: {fileID: 2069644319960382852}
   buyText: {fileID: 388323253847072796}
-  buyButton: {fileID: 0}
-  sellButton: {fileID: 0}
+  buyButton: {fileID: 2543581012653709715}
+  sellButton: {fileID: 3607959976341960182}
+  iType: 2
 --- !u!1 &6208093450527222545
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class tileController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         reward = rewardObj.AddComponent<Reward>();
         reward.setTile(this);
         rewardObj.SetActive(false);
@@ -40,6 +41,7 @@ public class tileController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             setRoomActive();
+            Debug.Log("Active");
         }
     }
 

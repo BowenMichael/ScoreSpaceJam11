@@ -451,14 +451,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
+  item: {fileID: 0}
   name: NULL ITEM
   desc: NULL DESC
   sellPrice: -1
   buyPrice: -1
+  stock: 0
   nameText: {fileID: 5779868681775775434}
   descText: {fileID: 8468376530203864849}
   sellText: {fileID: 2069644319960382852}
   buyText: {fileID: 388323253847072796}
+  buyButton: {fileID: 2543581012653709715}
+  sellButton: {fileID: 3607959976341960182}
+  iType: 0
 --- !u!1 &6208093450527222545
 GameObject:
   m_ObjectHideFlags: 0

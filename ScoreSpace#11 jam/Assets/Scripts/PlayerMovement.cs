@@ -86,20 +86,15 @@ public class PlayerMovement : MonoBehaviour
     private void updateCameraPosition()
     {
         Vector2 playerPosScreenSpace = Camera.main.WorldToScreenPoint(transform.position);
-        float widthPercent = 15 / 100 * Camera.main.pixelWidth;
-        float heightPercent = 15 / 100 * Camera.main.pixelHeight;
-        Vector3 offset = Vector3.zero;
-        if (Camera.main.pixelWidth - playerPosScreenSpace.x < widthPercent || playerPosScreenSpace.x < widthPercent)
+        if(playerPosScreenSpace.x > Screen.width ||
+            playerPosScreenSpace.y > Screen.height ||
+            playerPosScreenSpace.x < 0 ||
+            playerPosScreenSpace.y < 0)
         {
-            offset = Camera.main.transform.position - new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
-            Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z) + offset;
+            //Vector
+            //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z) + offset;
         }
-        if (Camera.main.pixelHeight - playerPosScreenSpace.y < heightPercent || playerPosScreenSpace.y < heightPercent)
-        {
-            offset = Camera.main.transform.position - new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
-            Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z) + offset;
-        }
-        //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z) + offset;
+
     }
 
     private void teleportTowardMouse()

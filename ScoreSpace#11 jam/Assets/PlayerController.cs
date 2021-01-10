@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody>();
         health = maxHealth;
-        hpUI.setHealth(health);
+        hpUI.setHealth(1f);
     }
 
     // Update is called once per frame
@@ -65,5 +65,18 @@ public class PlayerController : MonoBehaviour
     void onDeath()
     {
         gm.endGame();
+    }
+
+    public void upgrade(ItemController.itemType type)
+    {
+        switch (type)
+        {
+            case ItemController.itemType.UNKOWN:
+                return;
+            case ItemController.itemType.ITEM:
+                break;
+                //case
+
+        }
     }
 }
