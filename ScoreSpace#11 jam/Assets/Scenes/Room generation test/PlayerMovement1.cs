@@ -40,7 +40,7 @@ public class PlayerMovement1 : MonoBehaviour
         }
         if(eSlider != null)
         {
-            eSlider.setEnergy(energy/ maxEnergy);
+            eSlider.setEnergy(energy, maxEnergy);
         }
         lookAtMouse();
     }
