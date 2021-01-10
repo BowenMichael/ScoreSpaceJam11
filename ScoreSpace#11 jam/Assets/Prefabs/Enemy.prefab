@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2472159069635493380}
   - component: {fileID: 2472159069635493381}
   - component: {fileID: 2472159069635493382}
-  - component: {fileID: 2472159069635493377}
+  - component: {fileID: -3143133110717752586}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -113,7 +113,9 @@ MonoBehaviour:
   onDeath: {fileID: 5235100691880461010, guid: 69b52fa882e31b04a8f441fac095fea9, type: 3}
   player: {fileID: 0}
   speed: 1
---- !u!54 &2472159069635493377
+  dmg: 10
+  forceOfKnockBack: 200
+--- !u!54 &-3143133110717752586
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

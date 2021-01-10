@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
     public ParticleSystem onDeath;
     public GameObject player;
     public float speed;
+    public int dmg;
+    public float forceOfKnockBack;
     private EnemySpawner spawner;
     
 
@@ -41,12 +43,13 @@ public class EnemyController : MonoBehaviour
         //tmp.Play();
     }
 
-    private void lookAt(Vector3 pos)
+    private Vector3 lookAt(Vector3 pos)
     {
         //Look at
-        Vector3 directionToMouse = transform.position - pos;
-        float angle = Mathf.Atan2(directionToMouse.x, directionToMouse.y) * Mathf.Rad2Deg;
+        Vector3 directionTo = transform.position - pos;
+        float angle = Mathf.Atan2(directionTo.x, directionTo.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        return directionTo;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -55,5 +58,10 @@ public class EnemyController : MonoBehaviour
         {
 
         }
+    }
+
+    public Vector3 getFacing()
+    {
+        return lookAt(player.transform.position).normalized;
     }
 }

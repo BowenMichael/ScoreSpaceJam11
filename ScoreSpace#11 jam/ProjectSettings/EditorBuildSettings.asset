@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MichaelTestScene.unity
     guid: 293a6c27fe82b9b468222bdfd2ba62d1
+  - enabled: 1
+    path: Assets/Scenes/End Screen.unity
+    guid: aa63a1882766d214aa6fc59e363b9879
   m_configObjects: {}

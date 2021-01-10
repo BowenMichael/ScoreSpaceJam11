@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool cameraMovesWithPlayer;
     public bool teleportGuideEnabled;
     public Transform guideImage;
+    public bool knockedBack = false;
 
     private float horizontal;
     private float vertical;
@@ -44,26 +45,40 @@ public class PlayerMovement : MonoBehaviour
             updateGuidePosition();
         }
 
-        movementWSAD();
-        if (energy >= teleportCost)
+        if (!knockedBack)
         {
-            teleportCheck();
+            if (Time.timeScale == 1) {
+                movementWSAD();
+                if (energy >= teleportCost)
+                {
+                    teleportCheck();
+                }
+                if (energy < maxEnergy)
+                {
+                    energy += energyRegenPerSecond * Time.deltaTime;
+                }
+                if (eSlider != null)
+                {
+                    eSlider.setEnergy(energy / maxEnergy);
+                }
+                lookAtMouse();
+            }
         }
-        if (energy < maxEnergy)
+        else
         {
-            energy += energyRegenPerSecond * Time.deltaTime;
+            LeanTween.rotate(gameObject, new Vector3(0.0f, 0.0f, 360f), 1f).setOnComplete(onKnockbackComplete);
         }
-        if(eSlider != null)
-        {
-            eSlider.setEnergy(energy/ maxEnergy);
-        }
-        lookAtMouse();
         
+    }
+
+    private void onKnockbackComplete()
+    {
+        knockedBack = false;
     }
 
     private void updateGuidePosition()
     {
-        Vector3 offset = (mousePos - transform.position).normalized * maxDistance;
+        Vector3 offset = (new Vector3(mousePos.x, mousePos.y, 0.0f) - transform.position).normalized * maxDistance;
         Vector2 normalizedOffset = new Vector2(offset.x, offset.y).normalized;
         guideImage.position = new Vector3(offset.x, offset.y, guideImage.position.z) ;
     }

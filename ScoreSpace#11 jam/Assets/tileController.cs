@@ -24,6 +24,7 @@ public class tileController : MonoBehaviour
     private GameObject nextRoom;
     private tileController nextTile;
     private bool completed=false;
+    private GameController gm;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class tileController : MonoBehaviour
         reward.setTile(this);
         rewardObj.SetActive(false);
         roundText.text = "Round " + index;
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -89,10 +91,11 @@ public class tileController : MonoBehaviour
 
     public void moveToNextRoom()
     {
+        gm.roomComplete();
         if (nextTile != null)
             nextTile.setRoomActive();
         else
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().stageComplete();
+            gm.stageComplete();
     }
 
     private void setCameraToTile()
