@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
     public HPSliderHandler hpUI;
 
     private Rigidbody rb;
+    private GameController gm;
     private int health;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody>();
         health = maxHealth;
         hpUI.setHealth(health);
@@ -56,12 +58,12 @@ public class PlayerController : MonoBehaviour
     private void takeDamage(int dmg)
     {
         health -= dmg;
-        hpUI.setHealth(health / maxHealth);
+        hpUI.setHealth((health * 1.0f / maxHealth));
         
     }
 
     void onDeath()
     {
-
+        gm.endGame();
     }
 }
