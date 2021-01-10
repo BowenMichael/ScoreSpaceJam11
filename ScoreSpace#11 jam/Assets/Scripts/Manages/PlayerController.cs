@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void onHitEnemy(EnemyController enemy)
     {
-        takeDamage(enemy.dmg);
+        takeDamage(enemy.getDamage());
         plrMvm.knockedBack = true;
         rb.AddForce(enemy.getFacing() * -enemy.forceOfKnockBack);
 
