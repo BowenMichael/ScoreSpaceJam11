@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
 
     public void endGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(endScene, LoadSceneMode.Single);
     }
 

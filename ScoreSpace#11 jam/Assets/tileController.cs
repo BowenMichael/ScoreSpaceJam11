@@ -28,7 +28,7 @@ public class tileController : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1;
+        
         reward = rewardObj.AddComponent<Reward>();
         reward.setTile(this);
         rewardObj.SetActive(false);
@@ -47,6 +47,7 @@ public class tileController : MonoBehaviour
 
     public void setRoomActive()
     {
+        
         setCameraToTile();
         setPlayerToTile();
         startAnimation.transform.parent.gameObject.SetActive(true);
@@ -58,10 +59,10 @@ public class tileController : MonoBehaviour
 
         }
         rewardObj.SetActive(false);
+
         
-        
-        
-        
+
+
 
     }
 
