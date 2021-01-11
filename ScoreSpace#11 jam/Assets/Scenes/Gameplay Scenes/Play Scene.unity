@@ -270,7 +270,7 @@ MonoBehaviour:
   tile: {fileID: 2562176668514825339, guid: 434969a1c5cbe764082866dcbf300d29, type: 3}
   tileWidth: 10
   tileHeight: 10
-  gridSize: {x: 1, y: 1}
+  gridSize: {x: 1, y: 3}
   gridOffset: {x: 3, y: 3}
   player: {fileID: 2028531416}
   rooms:
@@ -1294,19 +1294,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4258411336109744479, guid: d739e08e3df19d746aa88a2bec707081, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4258411336109744479, guid: d739e08e3df19d746aa88a2bec707081, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4258411336109744479, guid: d739e08e3df19d746aa88a2bec707081, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4258411336109744479, guid: d739e08e3df19d746aa88a2bec707081, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4258411336109744479, guid: d739e08e3df19d746aa88a2bec707081, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1346,11 +1346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4258411336109744479, guid: d739e08e3df19d746aa88a2bec707081, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 361.93
+      value: -74
       objectReference: {fileID: 0}
     - target: {fileID: 4258411336109744479, guid: d739e08e3df19d746aa88a2bec707081, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -316
+      value: 155
       objectReference: {fileID: 0}
     - target: {fileID: 4258411336109744479, guid: d739e08e3df19d746aa88a2bec707081, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

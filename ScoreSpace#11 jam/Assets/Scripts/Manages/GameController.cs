@@ -83,6 +83,18 @@ public class GameController : MonoBehaviour
         return stageScaling*stage;
     }
 
-   
+    public int getScore()
+    {
+
+        return score;
+    }
+    public int removeScore(int cost)
+    {
+        score -= cost;
+        text.text = "Score: " + this.score;
+        return score;
+    }
+
+
 
 }

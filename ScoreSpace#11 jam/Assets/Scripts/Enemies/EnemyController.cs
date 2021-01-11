@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
             tmpBullet.setDmgScale(dmgScale);
             tmpBullet.transform.parent = null;
             timeSinceLastShot = 0;
-            //Debug.Log("Shot Bullet");
+            Debug.Log("Shot Bullet");
         }
         timeSinceLastShot += Time.deltaTime;
         

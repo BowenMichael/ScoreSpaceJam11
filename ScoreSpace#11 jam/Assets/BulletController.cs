@@ -42,15 +42,15 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Enemy"))
+        if (!other.CompareTag("Enemy") && !other.CompareTag("Untagged"))
         {
             if (other.CompareTag("Player"))
             {
-                //Debug.Log("Player Colloded: " +  dmgScale);
+                Debug.Log("Player Colloded: " +  dmgScale);
                 other.gameObject.GetComponent<PlayerController>().onHitBullet(this);
             }
             Destroy(gameObject);
-            //Debug.Log("Dead Bullet");
+            Debug.Log("Dead Bullet, " + other.tag);
         }
 
 
