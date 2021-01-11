@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public stickToPlayer stp;
     public float stunDurrationSeconds = 1f;
     private float stpf;
+    public AudioSource sound;
 
     // Start is called before the first frame update
     void Start()
@@ -121,7 +122,8 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position += (new Vector3(mousePos.x, mousePos.y, 0.0f) - transform.position).normalized * maxDistance;
         energy -= teleportCost;
-       
+        sound = gameObject.GetComponent<AudioSource>();
+        sound.Play();
     }
 
     private void hitEnemy(RaycastHit hit)
