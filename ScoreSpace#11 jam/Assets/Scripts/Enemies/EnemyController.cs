@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
         CHASER,
         SHOOTER
     }
+
     public enemyType type;
     public ParticleSystem onDeath;
     public GameObject player;
@@ -18,9 +19,12 @@ public class EnemyController : MonoBehaviour
     public float forceOfKnockBack;
     public float range;
     public GameObject proj;
+    public int shotCooldownInSeconds = 2;
+    public Transform shootTransform;
     private EnemySpawner spawner;
     private float dmgScale;
     private Rigidbody rb;
+    private float timeSinceLastShot = 0;
     
 
     private void Start()
@@ -41,7 +45,9 @@ public class EnemyController : MonoBehaviour
             case enemyType.SHOOTER:
                 if (!moveAwayFromPlayer())
                 {
-
+                    shootAtPlayer();
+                    lookAt(player.transform.position);
+                    rb.velocity = Vector3.zero;
                 }
                 break;
         }
@@ -50,7 +56,17 @@ public class EnemyController : MonoBehaviour
 
     private void shootAtPlayer()
     {
-        Vector3 dir = (player.transform.position - transform.position).normalized;
+        if (timeSinceLastShot > shotCooldownInSeconds)
+        {
+            BulletController tmpBullet = Instantiate(proj, shootTransform.position, new Quaternion(), transform).GetComponent<BulletController>();
+            Vector3 dir = (player.transform.position - transform.position).normalized;
+            tmpBullet.setDirection(dir);
+            tmpBullet.setDmgScale(dmgScale);
+            tmpBullet.transform.parent = null;
+            timeSinceLastShot = 0;
+            Debug.Log("Shot Bullet");
+        }
+        timeSinceLastShot += Time.deltaTime;
         
     }
 
@@ -59,12 +75,27 @@ public class EnemyController : MonoBehaviour
         float distance = Mathf.Abs((player.transform.position - transform.position).magnitude);
         if (distance < range)
         {
-            Vector3 dir = -lookAt(player.transform.position);
+            Vector3 dir = lookAway(player.transform.position);
             moveTowardDir(dir);
             return true;
         }
         return false;
     }
+
+    Vector3 lookAway(Vector3 pos)
+    {
+        Vector3 directionTo = (transform.position - pos) + (transform.position - pos);
+        float angle = Mathf.Atan2(directionTo.x, directionTo.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        return directionTo;
+    }
+
+    void moveAwayDir()
+    {
+
+
+    }
+
 
     public void setSpawner(EnemySpawner spwn)
     {
@@ -96,8 +127,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnDestroy()
-    {
-        
+    {   
         spawner.removeEnemy(this.gameObject);
         //tmp.Play();
     }
@@ -131,6 +161,6 @@ public class EnemyController : MonoBehaviour
 
     public int getDamage()
     {
-        return (int)dmg;
+        return (int)(dmg * dmgScale);
     }
 }

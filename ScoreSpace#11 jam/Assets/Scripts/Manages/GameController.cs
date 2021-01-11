@@ -40,10 +40,6 @@ public class GameController : MonoBehaviour
     {
         stage++;
         PlayerPrefs.SetInt("Score", score);
-        if(score > PlayerPrefs.GetInt("HighScore"))
-        {
-            PlayerPrefs.SetInt("HighScore", score);
-        }
         PlayerPrefs.Save();
         PlayerPrefs.SetInt("RoomsCleared", PlayerPrefs.GetInt("RoomsCleared") + roomsCleared);
         //SceneManager.LoadScene(storeScene);
@@ -59,6 +55,10 @@ public class GameController : MonoBehaviour
     public void endGame()
     {
         Time.timeScale = 1;
+        if (score > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
         SceneManager.LoadScene(endScene, LoadSceneMode.Single);
     }
 

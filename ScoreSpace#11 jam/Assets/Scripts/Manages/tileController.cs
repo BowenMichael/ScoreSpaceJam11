@@ -53,7 +53,7 @@ public class tileController : MonoBehaviour
         
         setCameraToTile();
         setPlayerToTile();
-        startAnimation.transform.parent.gameObject.SetActive(true);
+
         startAnimation.onStartRoom();
         
         for (int i = 0; i < transform.childCount; i++)

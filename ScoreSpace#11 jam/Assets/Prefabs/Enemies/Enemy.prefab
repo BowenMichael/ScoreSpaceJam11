@@ -112,11 +112,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27619648a744ce543b0dd5ab2e77ab61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   onDeath: {fileID: 5235100691880461010, guid: 69b52fa882e31b04a8f441fac095fea9, type: 3}
   player: {fileID: 0}
   speed: 1
   dmg: 10
   forceOfKnockBack: 200
+  range: 0
+  proj: {fileID: 0}
+  shotCooldownInSeconds: 2
+  shootTransform: {fileID: 0}
 --- !u!54 &5051913252891699922
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,7 +136,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!1 &3630499095206485353
 GameObject:

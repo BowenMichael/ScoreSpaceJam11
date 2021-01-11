@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             onHitBullet(collision.gameObject.GetComponent<BulletController>());
             Debug.Log("Hit Bullet");
-        }
+         }
         //rb.velocity = Vector3.zero;
     }
 
@@ -58,20 +58,23 @@ public class PlayerController : MonoBehaviour
         takeDamage(enemy.getDamage());
         plrMvm.knockedBack = true;
         rb.AddForce(enemy.getFacing() * -enemy.forceOfKnockBack);
+        
 
 
     }
-    private void onHitBullet(BulletController enemy)
+    public void onHitBullet(BulletController enemy)
     {
+        Debug.Log(enemy.getDmg());
         takeDamage(enemy.getDmg());
         plrMvm.knockedBack = true;
-        rb.AddForce(enemy.getDir() * -enemy.forceOfKnockBack);
+        rb.AddForce(enemy.getDir() * enemy.forceOfKnockBack);
 
 
     }
 
     private void takeDamage(int dmg)
     {
+        //Debug.Log(dmg);
         health -= dmg;
         hpUI.setHealth(health, maxHealth);
         

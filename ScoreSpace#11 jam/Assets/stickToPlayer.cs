@@ -18,8 +18,8 @@ public class stickToPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Camera.main.WorldToScreenPoint(plr.transform.position);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f) + new Vector3(0.0f, 20.0f, 0.0f);
+        Vector3 pos = Camera.main.WorldToScreenPoint(plr.transform.position);
+        transform.position = (new Vector3(pos.x, pos.y, 0.0f) + new Vector3(0.0f, 20.0f, 0.0f)) ;
         
     }
 
