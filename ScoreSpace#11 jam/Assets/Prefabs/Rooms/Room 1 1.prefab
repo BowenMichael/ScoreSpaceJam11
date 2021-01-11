@@ -527,8 +527,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 2472159069635493383, guid: 325edf0de95436340b176b430101464a, type: 3}
+  porjEnemies: {fileID: 2472159069635493383, guid: ea0287a0b4bda4c4eb6ed916181cf748, type: 3}
   enemyParent: {fileID: 3076170528576860698}
   numberOfEnemies: 5
+  numberOfProjEnemies: 2
   maxPos: 9
   waveSpawn: 0
   waveTimeInSeconds: 5
@@ -4055,7 +4057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9124455630780725532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4584,7 +4586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 785004432175077262, guid: 31b5640542da94d478c4244749e2f696, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 785004432175077262, guid: 31b5640542da94d478c4244749e2f696, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4592,7 +4594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 785004432175077262, guid: 31b5640542da94d478c4244749e2f696, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 785004432175077262, guid: 31b5640542da94d478c4244749e2f696, type: 3}
       propertyPath: m_AnchorMin.y
@@ -4636,7 +4638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 785004432175077262, guid: 31b5640542da94d478c4244749e2f696, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 885
+      value: 415
       objectReference: {fileID: 0}
     - target: {fileID: 785004432175077262, guid: 31b5640542da94d478c4244749e2f696, type: 3}
       propertyPath: m_AnchoredPosition.y

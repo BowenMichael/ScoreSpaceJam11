@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
     public int shotCooldownInSeconds = 2;
     public Transform shootTransform;
     private EnemySpawner spawner;
-    private float dmgScale;
+    public float dmgScale;
     private Rigidbody rb;
     private float timeSinceLastShot = 0;
     
