@@ -5,17 +5,6 @@ using UnityEngine;
 public class Reward : MonoBehaviour
 {
     private tileController parentTile;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void setTile(tileController tile)
     {

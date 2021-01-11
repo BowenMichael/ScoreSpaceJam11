@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //MousePosition in world space
-        mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 
         if (cameraMovesWithPlayer)
         {
@@ -85,14 +85,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void updateCameraPosition()
     {
+        
         Vector2 playerPosScreenSpace = Camera.main.WorldToScreenPoint(transform.position);
-        if(playerPosScreenSpace.x > Screen.width ||
+        //Debug.Log(playerPosScreenSpace + "; " + Screen.width + "," + Screen.height);
+        if (playerPosScreenSpace.x > Screen.width ||
             playerPosScreenSpace.y > Screen.height ||
             playerPosScreenSpace.x < 0 ||
             playerPosScreenSpace.y < 0)
         {
             //Vector
-            //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z) + offset;
+            Debug.Log("Move Cam");
+            Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
         }
 
     }
