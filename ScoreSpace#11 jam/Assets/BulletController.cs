@@ -6,7 +6,7 @@ public class BulletController : MonoBehaviour
 {
     public float speed;
     public float dmg;
-    private float dmgScale;
+    public float dmgScale = 1f;
     public float forceOfKnockBack;
 
     private Vector3 dir;
@@ -46,6 +46,7 @@ public class BulletController : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
+                Debug.Log("Player Colloded: " +  dmgScale);
                 other.gameObject.GetComponent<PlayerController>().onHitBullet(this);
             }
             Destroy(gameObject);
