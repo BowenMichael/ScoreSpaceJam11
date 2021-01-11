@@ -15,6 +15,7 @@ public class StoreManager : MonoBehaviour
     public int healthIncrement = 5;
     public int energyRegenIncrement = 5;
     public int MaxEnergyIncrement = 5;
+    public int increaseDist = 1;
 
 
     private void Start()
@@ -48,7 +49,8 @@ public class StoreManager : MonoBehaviour
             {
                 case ItemController.itemType.UNKOWN:
                     return;
-                case ItemController.itemType.ITEM:
+                case ItemController.itemType.INCREASE_DIST:
+                    plr.increaseDist(increaseDist);
                     break;
                 case ItemController.itemType.ENERGY_MAX:
                         plr.increaseMaxEnergy(MaxEnergyIncrement);

@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (!knockedBack)
         {
-            
             if (Time.timeScale == 1) {
                 movementWSAD();
                 lookAtMouse();
@@ -92,9 +91,6 @@ public class PlayerMovement : MonoBehaviour
         knockedBack = false;
         stp.resetStun();
         stpf = 0;
-
-
-
     }
 
     private void updateGuidePosition()
@@ -115,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
             playerPosScreenSpace.y < 0)
         {
             //Vector
-            Debug.Log("Move Cam");
+            //Debug.Log("Move Cam");
             Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
         }
 
@@ -130,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void hitEnemy(RaycastHit hit)
     {
-        gm.addScore();
+        gm.addScore(hit.collider.gameObject.GetComponent<EnemyController>().getScore());
         hit.collider.gameObject.GetComponent<EnemyController>().collisionWithPlayer();
     }
 
@@ -167,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
                     teleportTowardMouse();
                 }
 
-                Debug.Log("hit");
+                //Debug.Log("hit");
             }
             else
             {
@@ -188,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void movementWSAD()
     {
+        rb.velocity = Vector3.zero;
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 

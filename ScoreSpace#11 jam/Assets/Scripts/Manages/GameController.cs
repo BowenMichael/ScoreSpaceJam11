@@ -31,9 +31,9 @@ public class GameController : MonoBehaviour
         text.text = "Score: " + score;
     }
     public void addScore(int score)
-    {
-        this.score += score;
-        text.text = "Score: " + this.score;
+    {       
+            this.score += score;
+            text.text = "Score: " + this.score;
     }
 
     public void stageComplete()

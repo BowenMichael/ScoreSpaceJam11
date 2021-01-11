@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
     public float dmgScale;
     private Rigidbody rb;
     private float timeSinceLastShot = 0;
+    public int score;
     
 
     private void Start()
@@ -64,7 +65,7 @@ public class EnemyController : MonoBehaviour
             tmpBullet.setDmgScale(dmgScale);
             tmpBullet.transform.parent = null;
             timeSinceLastShot = 0;
-            Debug.Log("Shot Bullet");
+            //Debug.Log("Shot Bullet");
         }
         timeSinceLastShot += Time.deltaTime;
         
@@ -96,6 +97,10 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    public int getScore()
+    {
+        return (int)(score * dmgScale);
+    }
 
     public void setSpawner(EnemySpawner spwn)
     {

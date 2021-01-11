@@ -44,6 +44,7 @@ public class RoomManager : MonoBehaviour
         int middleX = gridSize.x / 2;
         int middleY = gridSize.y / 2;
         player.transform.position = tiles[0, 0].GetComponent<BoxCollider>().center;
+        tiles[0, 0].setRoomActive();
         //playSpace.center = new Vector3(((gridSize.x / 2.0f) * tileWidth) - tileWidth/2.0f, ((gridSize.y / 2.0f) * tileWidth) - tileHeight / 2.0f, 0.0f);
         //playSpace.size = new Vector3(tileWidth * gridSize.x, tileHeight * gridSize.y, 0.0f);
         //Instantiate(player, tiles[middleX, middleY].transform.position, new Quaternion());
@@ -56,6 +57,7 @@ public class RoomManager : MonoBehaviour
             
         }
     }
+
 
     void genGrid()
     {

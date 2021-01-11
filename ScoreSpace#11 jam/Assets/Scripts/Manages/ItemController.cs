@@ -34,6 +34,7 @@ public class ItemController : MonoBehaviour
         HEALTH,
         ENERGY_RATE,
         ENERGY_MAX,
+        INCREASE_DIST
 
     }
 

@@ -153,6 +153,8 @@ MonoBehaviour:
   proj: {fileID: 2034583458441196030, guid: a073c70cccb18644da7fa3fe69023299, type: 3}
   shotCooldownInSeconds: 2
   shootTransform: {fileID: 7446306301872559824}
+  dmgScale: 1
+  score: 4
 --- !u!54 &5051913252891699922
 Rigidbody:
   m_ObjectHideFlags: 0

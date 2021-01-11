@@ -43,12 +43,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             onHitEnemy(collision.gameObject.GetComponent<EnemyController>());
-            Debug.Log("Hit Enemy");
+            //Debug.Log("Hit Enemy");
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
             onHitBullet(collision.gameObject.GetComponent<BulletController>());
-            Debug.Log("Hit Bullet");
+            //Debug.Log("Hit Bullet");
          }
         //rb.velocity = Vector3.zero;
     }
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     }
     public void onHitBullet(BulletController enemy)
     {
-        Debug.Log(enemy.getDmg());
+        //Debug.Log(enemy.getDmg());
         takeDamage(enemy.getDmg());
         plrMvm.knockedBack = true;
         rb.AddForce(enemy.getDir() * enemy.forceOfKnockBack);
@@ -124,5 +124,10 @@ public class PlayerController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void increaseDist(int increment)
+    {
+        plrMvm.maxDistance += increment;
     }
 }

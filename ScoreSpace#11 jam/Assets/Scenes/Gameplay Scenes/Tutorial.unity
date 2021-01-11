@@ -534,7 +534,7 @@ MonoBehaviour:
   sm: {fileID: 0}
   text: {fileID: 2068556796}
   storeScene: Store
-  endScene: Tutorial
+  endScene: Menu
   stageScaling: 0.5
 --- !u!4 &387330661
 Transform:

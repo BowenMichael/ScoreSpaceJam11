@@ -122,6 +122,8 @@ MonoBehaviour:
   proj: {fileID: 0}
   shotCooldownInSeconds: 2
   shootTransform: {fileID: 0}
+  dmgScale: 1
+  score: 2
 --- !u!54 &5051913252891699922
 Rigidbody:
   m_ObjectHideFlags: 0

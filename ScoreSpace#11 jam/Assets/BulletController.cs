@@ -46,11 +46,11 @@ public class BulletController : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                Debug.Log("Player Colloded: " +  dmgScale);
+                //Debug.Log("Player Colloded: " +  dmgScale);
                 other.gameObject.GetComponent<PlayerController>().onHitBullet(this);
             }
             Destroy(gameObject);
-            Debug.Log("Dead Bullet");
+            //Debug.Log("Dead Bullet");
         }
 
 

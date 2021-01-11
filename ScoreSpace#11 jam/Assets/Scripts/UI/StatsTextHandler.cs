@@ -31,7 +31,7 @@ public class StatsTextHandler : MonoBehaviour
         {
             highScoreText.text = "high score: " + PlayerPrefs.GetInt("HighScore");
             yourScoreText.text = "Score: " +PlayerPrefs.GetInt("Score");
-            roomsClearedText.text = "Rooms Cleared" + PlayerPrefs.GetInt("RoomsCleared");
+            roomsClearedText.text = "Rooms Cleared: " + PlayerPrefs.GetInt("RoomsCleared");
             plrRegen.text = "Player Energy Regen: " + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().energyRegenPerSecond;
         }
     }
