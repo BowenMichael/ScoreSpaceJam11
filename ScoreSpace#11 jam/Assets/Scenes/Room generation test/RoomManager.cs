@@ -15,6 +15,8 @@ public class RoomManager : MonoBehaviour
 
     private BoxCollider playSpace;
     private GameController gm;
+    public bool isTutorial;
+    public GameObject firstPanel;
 
 
     // Start is called before the first frame update
@@ -22,6 +24,19 @@ public class RoomManager : MonoBehaviour
     {
         gm = GetComponent<GameController>();
         setUpRooms();
+        
+    }
+
+    public bool checkTutorial()
+    {
+        if (isTutorial)
+        {
+            Time.timeScale = 0;
+            //firstPanel.SetActive(true);
+            return true;
+           
+        }
+        return false;
     }
 
     void placePlayer()
@@ -103,6 +118,7 @@ public class RoomManager : MonoBehaviour
         genGrid();
         assignNeighbors();
         placePlayer();
+        
     }
 
 }

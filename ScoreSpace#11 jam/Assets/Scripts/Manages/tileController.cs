@@ -25,6 +25,7 @@ public class tileController : MonoBehaviour
     private tileController nextTile;
     private bool completed=false;
     private GameController gm;
+    private RoomManager rm;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class tileController : MonoBehaviour
         rewardObj.SetActive(false);
         roundText.text = "Round " + index;
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        rm = GameObject.FindGameObjectWithTag("GameController").GetComponent<RoomManager>();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -41,6 +43,7 @@ public class tileController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             setRoomActive();
+            
             Debug.Log("Active");
         }
     }

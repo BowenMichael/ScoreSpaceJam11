@@ -21,12 +21,17 @@ public class PlayerMovement : MonoBehaviour
     public float energy = 0;
     Vector3 mousePos;
     private GameController gm;
+    private Rigidbody rb;
     float angle;
+    public stickToPlayer stp;
+    public float stunDurrationSeconds = 1f;
+    private float stpf;
 
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -47,8 +52,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (!knockedBack)
         {
+            
             if (Time.timeScale == 1) {
                 movementWSAD();
+                lookAtMouse();
                 if (energy >= teleportCost)
                 {
                     teleportCheck();
@@ -61,19 +68,33 @@ public class PlayerMovement : MonoBehaviour
                 {
                     eSlider.setEnergy(energy, maxEnergy);
                 }
-                lookAtMouse();
+                
             }
         }
         else
         {
-            LeanTween.rotate(gameObject, new Vector3(0.0f, 0.0f, 360f), 1f).setOnComplete(onKnockbackComplete);
+            stp.gameObject.SetActive(true);
+            //LeanTween.(gameObject, new Vector3(0.0f, 0.0f, 0.0f), stunDurrationSeconds).setOnComplete(onKnockbackComplete);
+            stpf += Time.deltaTime;
+            stp.setStun(stpf, stunDurrationSeconds);
+            if (stpf > stunDurrationSeconds)
+            {
+                onKnockbackComplete();
+            }
+            
         }
         
     }
 
     private void onKnockbackComplete()
     {
+        rb.velocity = Vector3.zero;
         knockedBack = false;
+        stp.resetStun();
+        stpf = 0;
+
+
+
     }
 
     private void updateGuidePosition()
@@ -110,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
     private void hitEnemy(RaycastHit hit)
     {
         gm.addScore();
-        Destroy(hit.collider.gameObject);
+        hit.collider.gameObject.GetComponent<EnemyController>().collisionWithPlayer();
     }
 
     private void lookAtMouse()

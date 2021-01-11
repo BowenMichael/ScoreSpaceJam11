@@ -259,7 +259,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9716981, g: 0.30709326, b: 0.46930465, a: 0}
+  m_BackGroundColor: {r: 0.9150943, g: 0.47912958, b: 0.8424336, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9150943, g: 0.47912958, b: 0.8424336, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6c138a14fdcd5af4aa525d4f120ccb5a, type: 3}
     m_FontSize: 25
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9150943, g: 0.47912958, b: 0.8424336, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6c138a14fdcd5af4aa525d4f120ccb5a, type: 3}
     m_FontSize: 25
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -1332,7 +1332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7805597414053466131, guid: c9f1d337dc041ea48a2d0d6cf2c1ecd3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -564.7845
+      value: -672.0527
       objectReference: {fileID: 0}
     - target: {fileID: 7805597414053466131, guid: c9f1d337dc041ea48a2d0d6cf2c1ecd3, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1368,7 +1368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7805597414053466131, guid: c9f1d337dc041ea48a2d0d6cf2c1ecd3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -282.39224
+      value: -336.0263
       objectReference: {fileID: 0}
     - target: {fileID: 7805597414053466131, guid: c9f1d337dc041ea48a2d0d6cf2c1ecd3, type: 3}
       propertyPath: m_AnchoredPosition.y

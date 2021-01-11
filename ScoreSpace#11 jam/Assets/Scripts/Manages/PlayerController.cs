@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void checkDeath()
     {
-        if(health < 0)
+        if(health <= 0)
         {
             onDeath();
         }
@@ -45,6 +45,12 @@ public class PlayerController : MonoBehaviour
             onHitEnemy(collision.gameObject.GetComponent<EnemyController>());
             Debug.Log("Hit Enemy");
         }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            onHitBullet(collision.gameObject.GetComponent<BulletController>());
+            Debug.Log("Hit Bullet");
+        }
+        //rb.velocity = Vector3.zero;
     }
 
     private void onHitEnemy(EnemyController enemy)
@@ -52,6 +58,14 @@ public class PlayerController : MonoBehaviour
         takeDamage(enemy.getDamage());
         plrMvm.knockedBack = true;
         rb.AddForce(enemy.getFacing() * -enemy.forceOfKnockBack);
+
+
+    }
+    private void onHitBullet(BulletController enemy)
+    {
+        takeDamage(enemy.getDmg());
+        plrMvm.knockedBack = true;
+        rb.AddForce(enemy.getDir() * -enemy.forceOfKnockBack);
 
 
     }

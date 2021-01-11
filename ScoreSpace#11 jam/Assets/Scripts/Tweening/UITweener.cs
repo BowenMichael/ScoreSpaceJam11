@@ -8,10 +8,11 @@ public class UITweener : MonoBehaviour
     public float duration;
     public LeanTweenType easeType;
     public AnimationCurve moveCurve;
+    public RoomManager rm;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rm = GameObject.FindGameObjectWithTag("GameController").GetComponent<RoomManager>();
         
     }
 
@@ -23,19 +24,25 @@ public class UITweener : MonoBehaviour
 
     public void onStartRoom()
     {
-        if (easeType == LeanTweenType.animationCurve)
-        {
-            LeanTween.moveX(gameObject, distX, duration).setOnComplete(DestroyMe).setEase(moveCurve).setIgnoreTimeScale(true);
-        }
-        else
-        {
-            LeanTween.moveX(gameObject, distX, duration).setOnComplete(DestroyMe).setEase(easeType).setIgnoreTimeScale(true);
-        }
+        if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<RoomManager>().checkTutorial())
+            if (easeType == LeanTweenType.animationCurve)
+            {
+                LeanTween.moveX(gameObject, distX, duration).setOnComplete(DestroyMe).setEase(moveCurve).setIgnoreTimeScale(true);
+            }
+            else
+            {
+                LeanTween.moveX(gameObject, distX, duration).setOnComplete(DestroyMe).setEase(easeType).setIgnoreTimeScale(true);
+            }
+        
     }
 
     private void DestroyMe()
     {
-        Time.timeScale = 1;
+        //if (!rm.checkTutorial())
+        //{
+            Time.timeScale = 1;
+        //}
+        //rm.checkTutorial();
         Destroy(gameObject);
     }
 
