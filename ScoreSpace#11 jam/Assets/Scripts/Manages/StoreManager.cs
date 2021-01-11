@@ -16,11 +16,13 @@ public class StoreManager : MonoBehaviour
     public int energyRegenIncrement = 5;
     public int MaxEnergyIncrement = 5;
     public int increaseDist = 1;
+    public GameController gm;
 
 
     private void Start()
     {
         plr = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         
         highScore = PlayerPrefs.GetInt("HighScore");
         foreach(GameObject item in items)
@@ -40,10 +42,10 @@ public class StoreManager : MonoBehaviour
     public void buyItem(ItemController item, int cost )
     {
         Debug.Log(item.iType);
-        if (cost <= score)
+        if (cost <= gm.getScore())
         {
             item.stock--;
-            score -= cost;
+            gm.removeScore(cost);
         
             switch (item.iType)
             {
@@ -62,7 +64,7 @@ public class StoreManager : MonoBehaviour
                     if (!plr.increaseHealth(healthIncrement))
                     {
                         item.notPuchasable("FULL");
-                        score += cost;
+                        gm.addScore(cost);
                         break;
                     }
                     break;

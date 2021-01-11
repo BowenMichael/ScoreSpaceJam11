@@ -54,7 +54,7 @@ public class PlayerMovement1 : MonoBehaviour
 
     private void hitEnemy(RaycastHit hit)
     {
-        gm.addScore();
+        gm.addScore(hit.collider.gameObject.GetComponent<EnemyController>().getScore());
         Destroy(hit.collider.gameObject);
     }
 

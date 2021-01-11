@@ -123,11 +123,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 0}
-  - {fileID: 5724880158724018930, guid: 083674043b228a04f94255dc3f972532, type: 3}
-  - {fileID: 5724880158724018930, guid: 2cd56d0fc1ae0ee41a3bf3ea21596f10, type: 3}
   - {fileID: 5724880158724018930, guid: 328ed05c2457ee443a2677475a90132a, type: 3}
+  - {fileID: 5724880158724018930, guid: 2cd56d0fc1ae0ee41a3bf3ea21596f10, type: 3}
   - {fileID: 5724880158724018930, guid: 478f63dead5674842a6a3e66806ef45e, type: 3}
+  - {fileID: 5724880158724018930, guid: 083674043b228a04f94255dc3f972532, type: 3}
   itemHolder: {fileID: 6824580882147424183}
   score: 0
   scoreText: {fileID: 0}
@@ -135,6 +134,7 @@ MonoBehaviour:
   healthIncrement: 5
   energyRegenIncrement: 5
   MaxEnergyIncrement: 5
+  increaseDist: 1
 --- !u!1 &6618249856457285499
 GameObject:
   m_ObjectHideFlags: 0
