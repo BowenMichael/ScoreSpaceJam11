@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody>();
+        
+
     }
 
     // Update is called once per frame
